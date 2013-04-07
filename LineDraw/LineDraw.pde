@@ -11,34 +11,21 @@ int NumOfBalls = 24; //Max number of Balls
 int nextBallInst = 0; //Next empty slot for a new Ball in the Ball Array
 float ballStartX = 30; //X position of the ball production point
 float ballStartY = 30; //X position of the ball production point
-int ballInter = 5; //Ball production interval in secs
+int ballInter = 3; //Ball production interval in secs
 int lastTimeCheck; //Timing variable
-
-int NumOfBalls = 24; //Max number of Balls
-int nextBallInst = 0; //Next empty slot for a new Ball in the Ball Array
-int ballInterval = 2; //Interval between ball production in secs
 
 int intFrameRate = 30; //Input frame rate to be removed
 
 //Create the array of "Line" objects
 Line[] lines = new Line[NumOfLines];
 //Create the array of "Ball" objects
-<<<<<<< HEAD
-Ball[] Balls = new Ball[NumOfBalls];
-
-
-=======
 Ball[] balls = new Ball[NumOfBalls];
->>>>>>> Ball Motion
 
 void setup() 
 {
   size(640, 360);
-<<<<<<< HEAD
   lastTimeCheck = millis();
-=======
   frameRate(intFrameRate);
->>>>>>> Ball Motion
 }
 
 void draw() 
@@ -50,27 +37,20 @@ void draw()
     lines[i].display();
     }
   }
-<<<<<<< HEAD
-  for(int i = 1; i <Balls.length; i++){
-  if(Balls[i]!=null) {
-  Balls[i].display();
-  }
-  }
- if ( millis() > lastTimeCheck + (ballInter*1000) ) {
-    lastTimeCheck = millis();
-=======
-    //Loop through the array and draw the Balls (calling the display method)
+
+  //Loop through the array and draw the Balls (calling the display and move method)
   for(int i = 1; i <balls.length; i++){
     if(balls[i]!=null) {
     balls[i].move();
+    balls[i].collide();
     balls[i].display();
     }
   }
-  if(frameCount % (ballInterval * intFrameRate) == 0) {
->>>>>>> Ball Motion
+  if(frameCount % (ballInter * intFrameRate) == 0) {
     newBall();
   }
 }
+
 void mousePressed() 
 {
   checkHandle();   
@@ -131,14 +111,10 @@ void newBall(){
               nextBallInst = 1;
             }
           //If not, increment the current array slot by 1
-          else {nextBallInst += 1;}
+          else {nextBallInst += 1;}       
           
-<<<<<<< HEAD
-          Balls[nextBallInst] = new Ball(ballStartX,ballStartY);
-}
+          balls[nextBallInst] = new Ball(ballStartX,ballStartY);
+          }
+          
 
-=======
-          balls[nextBallInst] = new Ball(50,50);
-}
->>>>>>> Ball Motion
 
