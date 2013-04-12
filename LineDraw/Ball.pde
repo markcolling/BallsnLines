@@ -49,6 +49,10 @@ class Ball{
           //If less than the radius, a collision has occured.
           if(distToPoint<=d/2){
             c = color(random(255),random(255),random(255));
+            
+            float vToNorm = PVector.angleBetween(v,l1tol2);
+            v.rotate(vToNorm);
+            
           }
         }
       }
